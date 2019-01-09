@@ -102,7 +102,8 @@ class Test extends React.Component{
                     <TextInput style = {Style.edit} 
                     onChangeText={() => this.handleChange}></TextInput>
                     <View style = {Style.group} >
-                        <TouchableOpacity style = {Style.button}>
+                        <TouchableOpacity style = {Style.button}
+                            onPress={this.handleSubmit}>
                             <Text style={Style.text} >Sign Up</Text>
                         </TouchableOpacity>
                         <TouchableOpacity style = {Style.button}>
