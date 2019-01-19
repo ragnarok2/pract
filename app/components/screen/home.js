@@ -159,6 +159,16 @@ class Home extends React.Component{
                         } >
                         <Text style={Style.text} > TEST </Text>
                     </TouchableOpacity>                 
+                    <TouchableOpacity style={Style.button}
+                        onPress={() => {
+                            Actions.Twitter({
+                                login: this.state.login,
+                                password: this.state.password
+                            })
+                        }
+                        } >
+                        <Text style={Style.text} > TWITTER </Text>
+                    </TouchableOpacity>                 
                 </View>
             </View>
         )        
