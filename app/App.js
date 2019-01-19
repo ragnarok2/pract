@@ -6,6 +6,7 @@ import Login from './components/screen/login'
 import Registry from './components/screen/registry'
 import ListItem from './components/screen/listItem'
 import Test from './components/screen/test'
+import Twitter from './components/screen/twitter'
 
 import {
     Router,
@@ -33,6 +34,7 @@ class App extends React.Component {
                     <Scene key='registry' component={Registry} title='Registry' />                    
                     <Scene key='ListItem' component={ListItem} title='ListItem' />
                     <Scene key='Test' component={Test} title='Test' />
+                    <Scene key='Twitter' component={Twitter} title='Twitter' />
                 </Scene>
             </Router>
         )
