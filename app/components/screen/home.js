@@ -10,7 +10,7 @@ import {
     Actions,
 } from 'react-native-router-flux'
 
-import {validate} from '../../services/validate'
+import {login, password} from '../../services/validate'
 
 import Style from '../../styles/style'
 
@@ -47,7 +47,33 @@ class Home extends React.Component{
     handleRead(){        
     }
     
-    
+    validate(text, type)
+    {
+        login
+        password
+
+        if (type == 'login')
+        {
+            if (login.test(text)){
+                alert("login is validated")
+                console.log("login is validated")
+                this.setState({ login : text })
+            } else {
+                console.log("login isn`t validated")
+                alert("login isn`t validated")
+            }
+        }else if (type == 'password')
+        {
+            if (password.test(text)){
+                alert("password is validated")
+                console.log("password is validated")
+                this.setState({ password : text })
+            } else {
+                console.log("password isn`t validated")
+                alert("password isn`t validated")
+            }
+        }
+    }
 
     show = () => {
         const {login, password} = this.state;
@@ -68,9 +94,10 @@ class Home extends React.Component{
 
                 <TextInput
                     style = { Style.edit } 
-                    onChangeText = {(text) => validate(text, 'login')}
-                    onChange = {() => this.handleChange}
-                    value = {this.state.login} >
+                    onChangeText = {(text) => this.validate(text, 'login')}
+                    // onChange = {() => this.handleChange}
+                    // value = {this.state.login} 
+                    >
 
                 </TextInput>
 
@@ -80,9 +107,10 @@ class Home extends React.Component{
 
                 <TextInput
                     style = {Style.edit}
-                    onChangeText = {(text) => {validate(text, 'password')}} 
+                    onChangeText = {(text) => {this.validate(text, 'password')}} 
                     secureTextEntry = {true} 
-                    value = {this.state.password}>
+                    // value = {this.state.password}
+                    >
 
                 </TextInput>
 

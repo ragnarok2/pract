@@ -16,8 +16,8 @@ import {login, password} from '../../services/validate'
 
 class Test extends React.Component{
 
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
         this.state = {
             login: '',
             password: '',
@@ -26,81 +26,104 @@ class Test extends React.Component{
             phone: '',
         }
 
-        this.handleSubmit = this.handleSubmit.bind(this)
         this.handleChange = this.handleChange.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
+    }
+    handleChange(text) {
+        this.setState({
+            login: text,
+            password: text,
+            name: text,
+            email: text,
+            phone: text,
+        })
     }
 
-    handleSubmit = () => {
-        regItem(this.state.login,
+    handleSubmit() {
+        regItem(
+            this.state.login,
             this.state.password,
-            this.state,name,
+            this.state.name,
             this.state.email,
             this.state.phone)
         alert("Registration successful")
     }
 
-    handleChange = (e) =>{
-        this.setState({
-            login: e.nativeEvent.text,
-            password: e.nativeEvent.text,
-            name: e.nativeEvent.text,
-            email: e.nativeEvent.text,
-            phone: e.nativeEvent.text,
-        })
+    show = () => {
+        const {login, password} = this.state;
+        alert(this.state.login);
+        alert(this.state.password);
+        alert(this.state.name);
+        alert(this.state.email);
+        alert(this.state.phone);
     }
 
-    validate(type, text){
+    // readyToDB(type, text){
+    //     if (type == 'login'){
+    //         this.setState({login: text})
+    //     }else if (type == 'password'){
+    //         this.setState({password: text})
+    //     }else if (type == 'name'){
+    //         this.setState({name: text})
+    //     }else if (type == 'email'){
+    //         this.setState({email: text})
+    //     }else if (type == 'login'){
+    //         this.setState({phone: text})
+    //     }
+    // }
 
-        login
-        password
+    // validate(type, text){
 
-        if (type == 'login')
-        {
-            if (login.test(text)){
-                alert("login is validated")
-            } else {
-                alert("login isn`t validated")
-            }
-        } else if (type == 'password')
-        {
-            if (password.test(text)){
-                alert("password is validated")
-            } else {
-                alert("password isn`t validated")
-            }
-        }else {
-            alert("You don`t enter any login any password")
-        }
+    //     login
+    //     password
+
+    //     if (type == 'login')
+    //     {
+    //         if (login.test(text)){
+    //             alert("login is validated")
+    //         } else {
+    //             alert("login isn`t validated")
+    //         }
+    //     } else if (type == 'password')
+    //     {
+    //         if (password.test(text)){
+    //             alert("password is validated")
+    //         } else {
+    //             alert("password isn`t validated")
+    //         }
+    //     }else {
+    //         alert("You don`t enter any login any password")
+    //     }
         
-    }
+    // }
 
     render(){
         return (        
-            <View style = {Style.container} >
-                {/* <Text>
-                    Hi my friend {this.props.login}
-                </Text>
-                <Text>\
-                    Your pasword is {this.props.password}
-                </Text> */}
+            <View style = {Style.container} >                
                 <View style = {Style.title}>
                     <Text style = {Style.login}>login</Text>
                     <TextInput style = {Style.edit}
-                    onChangeText={() => this.handleChange} ></TextInput>
+                    onChangeText={login => this.setState({login})}
+                    ></TextInput>
                     <Text style = {Style.login}>password</Text>
-                    <TextInput style = {Style.edit} 
-                    onChangeText={() => this.handleChange}></TextInput>
+                    <TextInput style = {Style.edit}
+                    onChangeText={password => this.setState({password})}
+                    secureTextEntry={true} ></TextInput>
                     <Text style = {Style.login}>repeat password</Text>
-                    <TextInput style = {Style.edit} ></TextInput>
-                    <Text style = {Style.login}>name</Text>
                     <TextInput style = {Style.edit} 
-                    onChangeText={() => this.handleChange}></TextInput>
+                    secureTextEntry={true}></TextInput>
+                    <Text style = {Style.login}>name</Text>
+                    <TextInput style = {Style.edit}
+                    onChangeText={name=> this.setState({name})}
+                    ></TextInput>
                     <Text style = {Style.login}>email</Text>
                     <TextInput style = {Style.edit} 
-                    onChangeText={() => this.handleChange}></TextInput>
+                    onChangeText={email=> this.setState({email})}
+                    ></TextInput>
                     <Text style = {Style.login}>phone</Text>
                     <TextInput style = {Style.edit} 
-                    onChangeText={() => this.handleChange}></TextInput>
+                    onChangeText={phone=> this.setState({phone})}
+                    ></TextInput>                    
                     <View style = {Style.group} >
                         <TouchableOpacity style = {Style.button}
                             onPress={this.handleSubmit}>
@@ -108,6 +131,10 @@ class Test extends React.Component{
                         </TouchableOpacity>
                         <TouchableOpacity style = {Style.button}>
                             <Text style={Style.text} >Sign In</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style = {Style.button}
+                            onPress={this.show}>
+                            <Text style={Style.text} >Show Data</Text>
                         </TouchableOpacity>
                     </View>
                 </View>

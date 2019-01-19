@@ -7,13 +7,13 @@ export const addItem = (item, item1) => {
     })
     
 }
-export const regItem = (item, item1, item2, item3, item4) =>  {
+export const regItem = (item2, item3, item4, item5, item6) =>  {
     db.ref('/registration').push({
-        login: item,
-        password: item1,
-        name: item2,
-        email: item3,
-        phone: item4
+        login: item2,
+        password: item3,
+        name: item4,
+        email: item5,
+        phone: item6,
     })
 }
 
